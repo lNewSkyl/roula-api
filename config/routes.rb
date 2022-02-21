@@ -5,9 +5,11 @@ Rails.application.routes.draw do
     namespace :v1 do
     end
   end
+
   root "home#homepage"
   get 'homepage', to: 'home#homepage'
   get 'dashboard', to: 'home#dashboard'
+  
   resources :users do
   end
 end

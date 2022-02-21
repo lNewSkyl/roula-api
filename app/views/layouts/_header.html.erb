@@ -1,0 +1,42 @@
+
+   
+    <header class="p-3 bg-dark text-white">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <svg class="bi me-2" width="30" height="5"></svg>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <%= link_to "Roula", root_path, class:"navbar-brand mb-0 h1" %>
+        </ul>
+        <% if user_signed_in? %>
+        <div class="dropdown text-end">
+          <a class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= current_user.email %></a>
+            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+              <li><a class="dropdown-item" <%= link_to 'My Page', current_user%></a></li>
+              <li><a class="dropdown-item" <%= link_to 'Profile Settings', edit_user_registration_path, method: :get%></a></li>
+              <li><hr class="dropdown-divider"></li>
+              <a class="dropdown-item link-danger" <%= link_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: "false" } %></a></li>
+            </ul>
+        </div>           
+        <% else %>
+        <div class="col-md text-end"></div>
+          <a href="/users/sign_in" class="btn btn-outline-primary me-2 " role="button" aria-pressed="true">Login</a>&ensp;
+          <a href="/users/sign_up" class="btn btn-primary" role="button" aria-pressed="true">Sign-up</a>
+        <% end %>
+    </header>
+
+        <% if notice %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <center><%= notice %></center>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% elsif alert %>
+          <div class="alert alert-danger "><center><%= alert %></center></div>
+        <% else %>
+          <% flash.each do |message_type, message| %>
+            <div class="alert alert-<%= message_type %> alert-dismissible fade show" role="alert">
+              <center><%= message %></center>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <% end %>
+        <% end %>
+        
