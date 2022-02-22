@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   resources :products
   devise_for :users, controllers: { registrations: "registrations" }
+  post 'checkout/create', to: 'checkout#create'
 
   namespace :api do
     namespace :v1 do
     end
   end
 
-  root "home#homepage"
+  root 'home#homepage'
   get 'homepage', to: 'home#homepage'
   get 'dashboard', to: 'home#dashboard'
   
