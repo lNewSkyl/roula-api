@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: %i[ show  ]
+
 
   def index
     @users = User.all
   end
 
   def show
-    @user ||= User.find(params[:id])
   end
 
   private
@@ -13,5 +14,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:id, :username, :email)
   end
+
+  def set_user
+    @user ||= User.find(params[:id])
+    @products = Product.order(created_at: :ASC)  
+  end
+  
 
 end 
