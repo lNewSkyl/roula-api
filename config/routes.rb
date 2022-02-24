@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   get 'checkout', to: 'checkouts#show'
 
   root 'home#homepage'
-  get 'homepage', to: 'home#homepage'
   
-  resources :users do
+  resources :users, only: [:index, :show]
+  get "/successful_payment", to: "application#successful_payment" do
+    session = Stripe::Checkout::Session.retrieve(params[:session_id])
+
   end
-  get "/successful_payment", to: "application#successful_payment"
   get "/cancelled_payment", to: "application#cancelled_payment"
 
   namespace :api do

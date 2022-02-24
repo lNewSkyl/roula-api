@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  
   def successful_payment
     render "/successful_payment"
   end

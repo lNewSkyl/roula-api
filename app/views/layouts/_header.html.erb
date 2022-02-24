@@ -3,6 +3,8 @@
         <svg class="bi me-2" width="30" height="5"></svg>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <%= link_to "Roula", root_path, class:"navbar-brand mb-0 h1" %>
+          <%= link_to "Products", products_path, class:"navbar-brand mb-0 h1" %>
+          <%= link_to "Users", users_path, class:"navbar-brand mb-0 h1" %>
         </ul>
         <% if user_signed_in? %>
         <div class="dropdown text-end">
