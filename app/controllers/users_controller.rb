@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show ]
 
-
   def index
     @users = User.all
   end
@@ -20,5 +19,4 @@ class UsersController < ApplicationController
     @products = Product.order(created_at: :ASC)  
   end
   
-
 end 

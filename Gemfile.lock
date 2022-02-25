@@ -220,6 +220,9 @@ GEM
       dante (>= 0.2.0)
       multi_json (~> 1.0)
       stripe (> 5, < 6)
+    stripe_event (2.3.2)
+      activesupport (>= 3.1)
+      stripe (>= 2.8, < 6)
     strscan (3.0.1)
     thor (1.2.1)
     timeout (0.2.0)
@@ -275,6 +278,7 @@ DEPENDENCIES
   stimulus-rails
   stripe
   stripe-ruby-mock
+  stripe_event
   turbo-rails
   turbolinks
   tzinfo-data
