@@ -1,17 +1,19 @@
 class RegistrationsController < Devise::RegistrationsController
-  before_action :configure_account_update_params, only: [:update]
+  respond_to :json
+  protect_from_forgery with: :null_session
+
   private
 
-  def after_update_path_for(resource)
-    user_path(current_user)
+  def respond_with(resource, _opts = {})
+    resource.persisted? ? register_success : register_failed
   end
 
-  def after_sign_up_path_for(resource)
-    user_path(current_user)
+  def register_success
+    render json: { message: 'Signed up.' }
   end
 
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :balance])
+  def register_failed
+    render json: { message: "Signed up failure."}
   end
-  
+
 end
