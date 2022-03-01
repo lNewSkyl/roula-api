@@ -2,12 +2,7 @@ class CheckoutsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_product
 
-  # def show
-  #   CheckoutsService.new(@product.price, current_user).call
-  # end
-
   def show
-    puts (checkout_url)
     ActiveRecord::Base.transaction do
       current_user.set_payment_processor :stripe
       current_user.pay_customers
@@ -22,13 +17,6 @@ class CheckoutsController < ApplicationController
         success_url: 'http://localhost:3000/successful_payment',
         cancel_url: 'http://localhost:3000/cancelled_payment',
         )
-    end
-  end
-  
-  def check_session
-    if @checkout_session.status == "complete"
-      user.balance+=@product.price
-      user.save
     end
   end
 
