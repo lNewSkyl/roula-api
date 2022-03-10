@@ -1,0 +1,21 @@
+	<h1>All Users</h1>
+  <table class="table table-hover" table-layout: fixed>
+	  <thead>
+	    <tr>
+	      <th scope="col">ID#</th>
+	      <th scope="col">Username</th>
+	      <th scope="col">User e-mail</th>
+	      <th scope="col">User balance</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	<% @users.sort.each_with_index do |user, index| %>
+	    <tr>
+	      <th class="align-middle" scope="row"><%= user.id %></th>
+	      <td class="align-middle"><%= link_to user.username, user %></td>
+	      <td class="align-middle"><%= link_to user.email, user %></td>
+	      <td class="align-middle"><%= user.balance %></td>
+	    </tr>
+	<% end %>
+	  </tbody>
+	</table>

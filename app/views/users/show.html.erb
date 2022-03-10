@@ -1,0 +1,10 @@
+<h1><%= @user.username %></h1>
+<h2><%= @user.email%> <p></h2>
+</p>
+<h3>Balance <%= @user.balance %> $</h3>
+</p>
+
+  <% @products.each do |product| %>
+    <td><%= button_to "Add #{product}$", checkout_path, params: { id: product.id }, method: :get, remote: true, class: local_assigns[:class],
+    style: (local_assigns[:class] || local_assigns[:style]) ? local_assigns[:style] : 'background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em' %></td><br>
+  <% end %>
